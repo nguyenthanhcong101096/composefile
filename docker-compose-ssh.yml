@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  ubuntu_1:
+    privileged: true
+    image: congttl/ubuntu
+    container_name: ubuntu_1
+    ports:
+      - 80:80
+      - 22:22
+      - 443:443
+
+  ubuntu_2:
+    privileged: true
+    image: congttl/ubuntu
+    container_name: ubuntu_2
+    ports:
+      - 81:80
+      - 23:22
+      - 444:443
+
+  ubuntu_3:
+    privileged: true
+    image: congttl/ubuntu
+    container_name: ubuntu_3
+    ports:
+      - 82:80
+      - 24:22
+      - 445:443
