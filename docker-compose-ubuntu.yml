@@ -8,5 +8,5 @@ services:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     ports:
       - 80:80
-      - 22:22
+      - "22:22"
       - 443:443
