@@ -8,6 +8,22 @@ services:
       - 9090:9090
     volumes:
       - ./prometheus_config:/etc/prometheus
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports: 
+      - 3000:3000
+    volumes:
+      - ./grafana_config:/etc/grafana
+      - ./grafana_data:/var/lib/grafana
+      - ./grafana_logs:/var/log/grafana
+
 volumes:
   prometheus_config:
+    driver: local
+  grafana_config:
+    driver: local
+  grafana_data:
+    driver: local
+  grafana_logs:
     driver: local
