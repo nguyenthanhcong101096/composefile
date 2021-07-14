@@ -1,22 +1,22 @@
 version: '3'
 
 services:
-  ssl:
+  certbot:
     image: certbot/certbot
-    container_name: certbot
+    container_name: letsencrypt
     volumes:
-      - ./certbot_root:/tmp/letsencrypt
+      - ./certbot_root:/var/www/certbot
       - ./certbot-etc:/etc/letsencrypt
       - ./certbot-var:/var/lib/letsencrypt
-    command: certonly --email nguyenthanhcong101096@gmail.com  -d autodeploy.today  -d www.autodeploy.today -d dashboard.autodeploy.today -d registry.autodeploy.today
-    links: 
-      - nginx
+    command: certonly --webroot --webroot-path=/var/www/certbot --email nguyenthanhcong101096@gmail.com --agree-tos --no-eff-email -d autodeploy.today  -d www.autodeploy.today
 
   nginx:
     image: nginx
+    container_name: webserver
     ports:
       - 80:80
-    volumes: 
+      - 443:443
+    volumes:
       - ./conf.d:/etc/nginx/conf.d
       - ./certbot_root:/var/www/certbot
       - ./certbot-etc:/etc/letsencrypt
