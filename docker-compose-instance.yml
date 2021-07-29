@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  master:
+    privileged: true
+    image: congttl/alpine
+    container_name: master
+    ports:
+      - 80:80
+    networks:
+      - fpt-network
+  
+  worker1:
+    privileged: true
+    image: congttl/alpine
+    container_name: worker1
+    ports:
+      - 82:80
+    networks:
+      - fpt-network
+  
+  worker2:
+    privileged: true
+    image: congttl/alpine
+    container_name: worker2
+    ports:
+      - 82:80
+    networks:
+      - fpt-network
+
+networks:
+  fpt-network:
