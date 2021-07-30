@@ -7,7 +7,8 @@ services:
     container_name: master
     ports:
       - 80:80
-      - "20:22"
+      - "22:22"
+      - 443:443
     networks:
       - fpt-network
   
@@ -16,8 +17,7 @@ services:
     image: congttl/alpine
     container_name: worker1
     ports:
-      - 81:80
-      - "21:22"
+      - "23:22"
     networks:
       - fpt-network
   
@@ -26,8 +26,7 @@ services:
     image: congttl/alpine
     container_name: worker2
     ports:
-      - 82:80
-      - "22:22"
+      - "24:22"
     networks:
       - fpt-network
 
